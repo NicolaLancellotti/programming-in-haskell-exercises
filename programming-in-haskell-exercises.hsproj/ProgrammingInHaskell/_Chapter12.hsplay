@@ -1,0 +1,82 @@
+-- Haskell Playground 1.0
+import Data.Char
+
+---------------------------------------
+-- Exercise 1
+
+let tree = (Node (Node Leaf 1 Leaf) 2 Leaf)
+
+fmap (*10) tree
+(*10) <$> tree
+
+---------------------------------------
+-- Exercise 2
+
+lessThen6 = (\c -> c < 6) :: Int -> Bool
+length :: [Char] -> Int
+
+(lessThen6 <$> length) "Hello"
+(lessThen6 . length) "Hello"
+
+(lessThen6 <$> length) "Hello!"
+(lessThen6 . length) "Hello!"
+
+---------------------------------------
+-- Exercise 3
+
+------------------
+-- map1
+intToBool = (/= 0) :: Int -> Bool
+not :: Bool -> Bool
+
+-- (x -> a -> b)        -> (x -> a)       -> (x -> b)
+-- Int -> Bool -> Bool  -> (Int -> Bool)  -> (Int -> Bool)
+(pure not <*> intToBool) 1
+
+-- Explanation
+pure not :: Int -> Bool -> Bool
+(pure not) 1 True
+
+
+(\x -> (const not) x (intToBool x)) 1
+------------------
+-- map2
+intToDigit :: Int -> Char
+intToDigit 0
+intToDigit 1
+
+makeTuple = (\x y -> (x, y)) :: Char -> Bool -> (Char, Bool)
+
+(pure makeTuple <*> intToDigit <*> intToBool) 1
+
+-- Explanation
+let g1 = pure makeTuple :: Int -> Char -> Bool -> (Char, Bool)
+g1 1 'a' False
+
+-- (x -> a -> b)                         -> (x -> a)      -> (x -> b)
+-- (Int -> Char -> Bool -> (Char, Bool)) -> (Int -> Char) -> (Int -> Bool -> (Char, Bool))
+pure makeTuple                           <*> intToDigit    :: Int -> Bool -> (Char, Bool)
+let g2 = (\x -> g1 x (intToDigit x))
+
+-- (x -> a -> b)                  -> (x -> a)      -> (x -> b)
+-- (Int -> Bool -> (Char, Bool))  -> (Int -> Bool) -> (Int -> (Char, Bool))
+(pure makeTuple <*> intToDigit)   <*> intToBool     :: Int -> (Char, Bool)
+(\x -> g2 x (intToBool x)) 1
+ 
+---------------------------------------
+-- Exercise 4
+
+fmap (10*) (Z [1, 2, 3])
+fmap (10*) [1, 2, 3]
+
+
+pure (*) <*> Z [1, 2, 3] <*> Z [1, 2, 3]
+pure (*) <*> [1, 2, 3] <*> [1, 2, 3]
+
+---------------------------------------
+-- Exercise 7
+
+ord 'a'
+    
+do  x <- Add (Val 1) (Var 'a')
+    (Add (Val (ord x)) (Val ((ord x) + 1)))

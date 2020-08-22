@@ -1,0 +1,97 @@
+-- Haskell Playground 1.0
+---------------------------------------
+-- Exercise 1
+
+parse comment "-- comment\n"
+
+
+---------------------------------------
+-- Exercise 2
+
+--               expr
+--            /   |   \ 
+--        expr    +    expr  
+--      /   |   \        |    
+--    expr  +   expr    term  
+--     |         |       |    
+--    term      term    factor
+--     |         |       |    
+--    factor    factor  nat   
+--     |         |       |    
+--    nat       nat      4    
+--     |         |
+--     2         3
+      
+--           expr
+--        /   |   \ 
+--    expr    +    expr
+--     |        /   |   \
+--    term    expr  +   expr
+--     |       |         |
+--    factor term       term
+--     |      |          |
+--    nat    factor     factor
+--     |      |          |
+--     2     nat        nat
+--            |          |
+--            3          4
+
+---------------------------------------
+-- Exercise 3
+
+--          expr
+--        /  |  \ 
+--    term   +   expr
+--     |          |
+--    factor     term
+--     |          |
+--    nat        factor
+--     |          |
+--     2         nat
+--                |
+--                3
+
+--            expr
+--             |
+--            term
+--          /  |  \ 
+--    factor   *  term
+--     |         /  |  \
+--    nat   factor  *  term
+--     |     |          |             
+--     2     nat       factor
+--           |          |
+--           3         nat
+--                      | 
+--                      4
+
+--             expr
+--         /    |    \
+--      term    +    expr
+--       |            |
+--      factor       term        
+--      /  |  \       |
+--     (  expr )     factor
+--      /  |  \       |
+--   term  +  expr   nat
+--    |        |      |
+--   factor   term    4
+--    |        |
+--   nat      factor
+--    |        |
+--    2       nat
+--             |
+--             3
+
+---------------------------------------
+-- Exercise 7
+
+parse expr "2^3*4"
+
+
+---------------------------------------
+-- Exercise 8
+
+parse nats "5-3-1"
+
+parse expr'  "5-3-1"

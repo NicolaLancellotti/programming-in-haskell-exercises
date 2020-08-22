@@ -1,0 +1,105 @@
+-- Haskell Playground 1.0
+---------------------------------------
+-- Exercise 1
+
+zero = Zero
+one = Succ Zero
+two = Succ (Succ Zero)
+four = Succ(Succ(Succ (Succ Zero)))
+
+mult zero one == zero
+mult one zero == zero
+mult one one == one
+mult two two == four
+
+---------------------------------------
+-- Exercise 2
+
+tree = Node2 (Node2 (Leaf2 1) 3 (Leaf2 4)) 5
+             (Node2 (Leaf2 6) 7 (Leaf2 9))
+
+occurs 5 tree
+occurs 10 tree
+
+---------------------------------------
+-- Exercise 3
+
+balancedTree3 = Node3 
+                  (Leaf3 1)
+                  (Node3 
+                      (Leaf3 2) 
+                      (Leaf3 3)
+                  )
+              
+leaves balancedTree3
+balanced balancedTree3
+
+unbalancedTree = Node3 
+                  (Leaf3 1)
+                  (Node3 
+                    (Leaf3 2)
+                    (Node3 
+                      (Leaf3 1) 
+                      (Leaf3 4)
+                    )
+                   )
+
+leaves unbalancedTree
+balanced unbalancedTree
+
+---------------------------------------
+-- Exercise 4
+
+balance [1..5]
+
+---------------------------------------
+-- Exercise 5
+
+folde negate (*) (Add5 (Val5 2) (Val5 (-3)))
+
+---------------------------------------
+-- Exercise 6
+expr = (Add5 
+         (Val5 2) 
+         (Add5
+           (Val5 (-3))
+           (Val5 (-3))
+          )
+        )
+
+eval expr
+
+size expr
+
+---------------------------------------
+-- Exercise 7
+
+Nothing6 == Just6 1
+Just6 1 == Nothing6
+Just6 1 == Just6 2
+Nothing6 == Nothing6
+Just6 1 == Just6 1
+
+---------------------------------------
+-- Exercise 8
+
+-- A and B -> B
+isTaut (Imply (And (Var 'A') (Var 'B')) (Var 'A'))
+
+---- A or B <=> not (not A and not B)
+isTaut (Eq 
+        (Or (Var 'A') (Var 'B')) 
+        (Not (And (Not (Var 'A')) (Not (Var 'B'))))
+       )
+
+---- A or B <=> not A and not B
+isTaut (Eq 
+        (Or (Var 'A') (Var 'B')) 
+        (And (Not (Var 'A')) (Not (Var 'B')))
+       )
+
+---------------------------------------
+-- Exercise 8
+
+value (Mul (Val 2) (Add (Val 3) (Val 4)))
+value (Div (Val 14) (Add (Val 3) (Val 4)))

@@ -1,0 +1,27 @@
+-- Haskell Playground 1.0
+import Data.List
+
+---------------------------------------
+-- Exercise 6a
+
+solutions'' [1, 2, 3] 9
+
+---------------------------------------
+-- Exercise 6b
+
+nearestSolution [1, 2, 3] 3
+
+solutions'' [1, 2, 3] 12
+nearestSolution [1, 2, 3] 12
+
+---------------------------------------
+-- Exercise 6c
+
+numOps Sub (App Div 
+            (App Sub (Val 1) (Val 2))
+            (App Add (Val 1) (Val 2)))
+
+sol = solutions'' [2, 2, 4] 8
+sol 
+
+sort sol

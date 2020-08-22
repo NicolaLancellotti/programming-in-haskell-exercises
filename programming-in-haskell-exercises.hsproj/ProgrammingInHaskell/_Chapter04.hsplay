@@ -1,0 +1,55 @@
+-- Haskell Playground 1.0
+---------------------------------------
+-- Exercise 1
+
+halve [1 .. 6]
+halve' [1 .. 6]
+
+---------------------------------------
+-- Exercise 2
+
+third [1, 2, 3]
+third' [1, 2, 3]
+third'' [1, 2, 3]
+
+---------------------------------------
+-- Exercise 3
+
+safetail [1, 2, 3]
+safetail []
+
+safetail' [1, 2, 3]
+safetail' []
+
+safetail'' [1, 2, 3]
+safetail'' []
+
+---------------------------------------
+-- Exercise 5
+
+and' True True
+and' True False
+and' False True
+and' False False
+
+---------------------------------------
+-- Exercise 6
+
+and'' True True
+and'' True False
+and'' False True
+and'' False False
+
+---------------------------------------
+-- Exercise 7
+
+mult' 1 2 3
+
+---------------------------------------
+-- Exercise 
+
+luhnDouble 3
+luhnDouble 6
+
+luhn 1 7 8 4
+luhn 4 7 8 3

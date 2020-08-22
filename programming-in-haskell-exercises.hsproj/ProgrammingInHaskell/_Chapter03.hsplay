@@ -1,0 +1,19 @@
+-- Haskell Playground 1.0
+---------------------------------------
+-- Exercise 2
+
+bools = [True]
+nums = [[1], [1, 2]]
+add x1 x2 x3 = x1 + x2 + x3
+copy x = (x, x)
+apply f x = f x
+
+---------------------------------------
+-- Exercise 4
+
+second xs = head (tail xs)
+swap (x, y) = (y, x)
+pair x y = (x, y)
+double x = x * 2
+palindrome xs = reverse xs == xs
+twice f x = f (f x )

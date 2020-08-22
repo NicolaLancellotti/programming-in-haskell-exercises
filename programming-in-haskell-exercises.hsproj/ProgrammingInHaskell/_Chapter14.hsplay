@@ -1,0 +1,95 @@
+-- Haskell Playground 1.0
+import Data.Monoid
+import Data.Foldable
+
+---------------------------------------
+-- Exercise 1
+
+(Sum 1,  Product 2) `mappend` (Sum 3, Product 7)
+
+---------------------------------------
+-- Exercise 2
+
+ex2 x = Sum x
+
+ex2' = mappend ex2 ex2
+ex2' 2
+
+---------------------------------------
+-- Exercise 3
+
+-- fold
+fold (Just (Sum 1))
+fold (Just' (Sum 1))
+
+fold Nothing :: Maybe (Sum Int)
+fold Nothing' :: Maybe (Sum Int)
+
+-- foldMap
+foldMap Sum (Just (Sum 1))
+foldMap Sum (Just' (Sum 1))
+
+foldMap Sum Nothing
+foldMap Sum Nothing'
+
+-- foldr
+ex3r x s = (show x) ++ s
+
+foldr ex3r "" (Just 1)
+foldr ex3r "" (Just' 1)
+
+foldr ex3r "" Nothing
+foldr ex3r "" Nothing'
+
+-- foldl
+ex3l s x = (show x) ++ s
+
+foldl ex3l "" (Just 1)
+foldl ex3l "" (Just' 1)
+
+foldl ex3l "" Nothing
+foldl ex3l "" Nothing'
+
+-- traverse
+to_list n = [n]
+traverse to_list (Just 1)
+traverse to_list (Just' 1)
+
+traverse to_list (Just 0)
+traverse to_list (Just' 0)
+
+traverse to_list (Nothing)
+traverse to_list (Nothing')
+
+---------------------------------------
+-- Exercise 4
+
+tree = Node 
+  (Node (Leaf) 1 (Leaf)) 
+  2 
+  (Node (Leaf) 3 (Leaf))
+  
+tree' = Node 
+  (Node (Leaf) (Sum 1) (Leaf)) 
+  (Sum 2) 
+  (Node (Leaf) (Sum 3) (Leaf))
+  
+evenTree = Node 
+  (Node (Leaf) 2 (Leaf)) 
+  4 
+  (Node (Leaf) 6 (Leaf))
+
+fold tree'
+foldMap Sum tree
+foldr (\x s -> show x ++ s) "" tree
+foldl (\s x -> s ++ show x) "" tree
+
+isEven = (\x -> if even x then Just x else Nothing) 
+traverse isEven tree
+traverse isEven evenTree
+
+---------------------------------------
+-- Exercise 5
+
+filterF even [1, 2, 3]
+filterF even tree
