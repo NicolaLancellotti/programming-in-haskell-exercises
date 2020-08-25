@@ -1,19 +1,27 @@
 module Chapter06 where
   
---Exercise 1
+---------------------------------------
+-- Exercise 1
+
 fac 0 = 1
 fac n | n > 0 = n * fac (n - 1)
 
---Exercise 2
+---------------------------------------
+-- Exercise 2
+
 sumdown n 
   | n > 0 = n + sumdown (n - 1)
   | n == 0 = 0
-  
---Exercise 3
+
+---------------------------------------  
+-- Exercise 3
+
 m ^^^ 0 = 1
 m ^^^ n | n > 0 = m  * (m ^^^ (n - 1))
 
---Exercise 4
+---------------------------------------
+-- Exercise 4
+
 euclid x y 
   | x == y = x
   | x < y = euclid (y - x) x
@@ -24,7 +32,9 @@ euclid' x y
   | otherwise = euclid (max - min) min 
       where (max, min) = if x > y then (x, y) else (y, x)
 
---Exercise 6
+---------------------------------------
+-- Exercise 6
+
 and' [] = True
 and' (False : _) = False
 and' (True : xs) = and' xs
@@ -37,7 +47,7 @@ replicate' n x
   | n == 0 = []
   | n > 0 = [x] ++ replicate' (n - 1) x 
 
-nth (x: xs) n 
+nth (x : xs) n 
  | n == 0 = x
  | n > 0 = nth xs (n - 1)
 
@@ -47,7 +57,9 @@ elem' n (x : xs)
   | x == n = True
   | otherwise = elem' n xs
   
---Exercise 7
+---------------------------------------
+-- Exercise 7
+
 merge :: Ord a => [a] -> [a] -> [a]
 merge [] xs = xs
 merge xs [] = xs
@@ -55,22 +67,26 @@ merge (x : xs) (y : ys)
   | x < y = [x] ++ merge xs ([y] ++ ys)
   | x > y = [y] ++ merge ys ([x] ++ xs)
 
---Exercise 8
+---------------------------------------
+-- Exercise 8
+
 halve xs = (take k xs, drop k xs) where k = length xs `div` 2 
          
 msort [] = []
 msort [x] = [x]
 msort xs = merge (msort x) (msort y) where (x, y) = halve xs
 
---Exercise 9
+---------------------------------------
+-- Exercise 9
+
 sum' [] = 0
-sum' (x:xs) = x + sum' xs
+sum' (x : xs) = x + sum' xs
 
 take' _ [] = []
-take' n (x:xs) 
+take' n (x : xs) 
   | n <= 0 = []
   | otherwise = [x] ++ take' (n - 1) xs
   
-last' (x:xs)
+last' (x : xs)
   | null xs = x
   | otherwise = last' xs
