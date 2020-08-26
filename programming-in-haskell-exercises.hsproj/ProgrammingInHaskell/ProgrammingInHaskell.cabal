@@ -9,11 +9,12 @@ executable ProgrammingInHaskell
     main-is: Main.hs
     other-modules:
         Chapter05
-        Chapter03
-        Chapter04
         Chapter07
-        Chapter06
         Chapter01
+        Chapter04
+        Chapter03
+        Chapter08
+        Chapter06
         Chapter02
     default-language: Haskell2010
     build-depends:
