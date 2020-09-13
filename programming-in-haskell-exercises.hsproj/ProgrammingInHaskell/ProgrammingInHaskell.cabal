@@ -8,16 +8,17 @@ x-last-ide-version: HfM1.7.0
 executable ProgrammingInHaskell
     main-is: Main.hs
     other-modules:
-        Chapter06
-        Chapter07
-        Chapter09_6
-        Chapter02
-        Chapter05
         Chapter03
+        Chapter02
+        Chapter01
+        Chapter07
         Chapter09
+        Chapter05
+        Chapter06
+        Chapter09_6
         Chapter08
         Chapter04
-        Chapter01
+        Chapter10
     default-language: Haskell2010
     build-depends:
         base -any

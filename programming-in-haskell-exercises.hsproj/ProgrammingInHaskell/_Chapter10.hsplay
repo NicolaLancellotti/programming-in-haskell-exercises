@@ -1,0 +1,29 @@
+-- Haskell Playground 1.0
+---------------------------------------
+-- Exercise 1
+
+putStr' "Hello, world!"
+
+---------------------------------------
+-- Exercise 2
+
+putBoard [1, 2]
+
+---------------------------------------
+-- Exercise 3
+
+putBoard' [1, 2]
+
+---------------------------------------
+-- Exercise 4
+
+-- Compile with ghc
+--main :: IO()
+--main = adder
+
+---------------------------------------
+-- Exercise 5
+
+-- Compile with ghc
+--main :: IO()
+--main = adder'
